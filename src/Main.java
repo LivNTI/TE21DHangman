@@ -25,9 +25,11 @@ public class Main {
 
         //choose a word
         String word = "flaggstångsknoppspoleringsmedel";
+        System.out.println(word);
 
         // set the amount of lives (tries)
         int lives = 8;
+        boolean wordIsRevealed;
 
 
         //Create an array of letters
@@ -41,35 +43,41 @@ public class Main {
 
         //Create a scanner to be able to ask for user input
         Scanner myScan = new Scanner(System.in);
+        do {
+            wordIsRevealed = true;
 
-        // Ask user for input
-        System.out.print("Guess a letter: ");
-        String guess = myScan.nextLine();
+            // Ask user for input
+            System.out.print("Guess a letter: ");
+            String guess = myScan.nextLine();
 
-        // System.out.println("the guess is " + guess);
-        //create check value for letter
-        boolean letterFound = false;
+            // System.out.println("the guess is " + guess);
+            //create check value for letter
+            boolean letterFound = false;
 
-        //checks if the guessed letter exists in our word
-        for (int i = 0; i < letters.length; i++) {
+            //checks if the guessed letter exists in our word
+            for (int i = 0; i < letters.length; i++) {
 
-            if (guess.equals(String.valueOf(letters[i]))) {
-                //System.out.println("Letter " + guess + " is in the word");
-                //System.out.println("It is at index " + i);
-                reveal[i] = guess;
-                letterFound = true;
+                if (guess.equals(String.valueOf(letters[i]))) {
+                    reveal[i] = guess;
+                    letterFound = true;
+                }
+                if (reveal[i].equals("_")) {
+                    wordIsRevealed = false;
+                }
+
             }
-        }
 
-        if (!letterFound) { // same as letterFound == false
-            lives--;
-        }
+            if (!letterFound) { // same as letterFound == false
+                lives--;
+            }
 
-        //print the current revealed word and remaining lives
-        printList(reveal);
-        System.out.println("you now have " + lives + " lives left");
+            //print the current revealed word and remaining lives
+            printList(reveal);
+            System.out.println("you now have " + lives + " lives left");
 
+        } while ((lives > 0) && (!wordIsRevealed));
 
+        System.out.println("game over");
     }
 
     //prints the content of a String Array
