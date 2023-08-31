@@ -22,7 +22,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello and welcome to hangman!");
-        // howInputAndOutputWorks();
 
         //choose a word
         String word = "flaggstångsknoppspoleringsmedel";
@@ -34,18 +33,11 @@ public class Main {
         //Create an array of letters
         char[] letters = word.toCharArray();
         String[] reveal = new String[word.length()]; // this is where the revealed letter will be displayed
-        //String[] bokstaver = word.split(""); //how to split a string into a String array of letters
 
         // fyll reveal med _
         for (int i = 0; i < reveal.length; i++) {
             reveal[i] = "_";
         }
-
-        //String[] testlist = {"hej", "hopp", "hejsan"};
-        //printList(reveal);
-        //printList(testlist);
-        //printList(); // fungerar inte. Metoden måste får en String[] för att fungera!!!
-        //howInputAndOutputWorks(testlist); // vi får inte göra så här!!! metoden tar inte emot några parametrar
 
         //Create a scanner to be able to ask for user input
         Scanner myScan = new Scanner(System.in);
@@ -87,26 +79,18 @@ public class Main {
         }
         System.out.println();
     }
-
-
-    public static void howInputAndOutputWorks() {
-        System.out.println("To print in console typee:");
-        System.out.println(" sout + tab");
-
-        Scanner myScan = new Scanner(System.in);
-        String input = myScan.nextLine();
-
-        System.out.println("My input was " + input);
-    }
-
 }
 
 
-// this is a single line of comment
-/*
-This
-is
-a
-block
-comment
- */
+
+
+
+
+
+
+
+
+
+
+
+
