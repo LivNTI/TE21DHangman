@@ -14,8 +14,6 @@ Todo: how should my hangman work?
  * loop till done
   - no more life
   - word complete
-
-
  */
 
 import java.util.Arrays;
@@ -26,11 +24,17 @@ public class Main {
         System.out.println("Hello and welcome to hangman!");
         // howInputAndOutputWorks();
 
+        //choose a word
         String word = "flaggstångsknoppspoleringsmedel";
+
+        // set the amount of lives (tries)
+        int lives = 8;
+
 
         //Create an array of letters
         char[] letters = word.toCharArray();
         String[] reveal = new String[word.length()]; // this is where the revealed letter will be displayed
+        //String[] bokstaver = word.split(""); //how to split a string into a String array of letters
 
         // fyll reveal med _
         for (int i = 0; i < reveal.length; i++) {
@@ -47,28 +51,41 @@ public class Main {
         Scanner myScan = new Scanner(System.in);
 
         // Ask user for input
-        System.out.println("Guess a letter:");
+        System.out.print("Guess a letter: ");
         String guess = myScan.nextLine();
 
         // System.out.println("the guess is " + guess);
+        //create check value for letter
+        boolean letterFound = false;
 
+        //checks if the guessed letter exists in our word
         for (int i = 0; i < letters.length; i++) {
 
             if (guess.equals(String.valueOf(letters[i]))) {
-                System.out.println("Letter " + guess + " is in the word");
-                System.out.println("It is at index" + i);
-
+                //System.out.println("Letter " + guess + " is in the word");
+                //System.out.println("It is at index " + i);
+                reveal[i] = guess;
+                letterFound = true;
             }
         }
+
+        if (!letterFound) { // same as letterFound == false
+            lives--;
+        }
+
+        //print the current revealed word and remaining lives
+        printList(reveal);
+        System.out.println("you now have " + lives + " lives left");
 
 
     }
 
-
+    //prints the content of a String Array
     public static void printList(String[] myString) {
         for (int i = 0; i < myString.length; i++) {
-            System.out.println("at index " + i + " is letter " + myString[i]);
+            System.out.print(myString[i]);
         }
+        System.out.println();
     }
 
 
