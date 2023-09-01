@@ -45,10 +45,21 @@ public class Main {
         Scanner myScan = new Scanner(System.in);
         do {
             wordIsRevealed = true;
+            String guess;
 
+            // Check user guess
             // Ask user for input
-            System.out.print("Guess a letter: ");
-            String guess = myScan.nextLine();
+            while (true) {
+                System.out.print("Guess a letter: ");
+                guess = myScan.nextLine();
+                // Check that input is a letter
+                if ((guess.matches("[a-öA-Ö]+")) &&
+                        (guess.length() == 1)) {
+                    break;
+                }
+                System.out.println("Please guess a single letter");
+            }
+
 
             // System.out.println("the guess is " + guess);
             //create check value for letter
@@ -57,8 +68,9 @@ public class Main {
             //checks if the guessed letter exists in our word
             for (int i = 0; i < letters.length; i++) {
 
-                if (guess.equals(String.valueOf(letters[i]))) {
-                    reveal[i] = guess;
+                if (guess.equalsIgnoreCase(String.valueOf(letters[i]))) {
+                    //print letter to revealed word
+                    reveal[i] = guess.toLowerCase();
                     letterFound = true;
                 }
                 if (reveal[i].equals("_")) {
