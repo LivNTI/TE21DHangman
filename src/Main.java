@@ -16,7 +16,6 @@ Todo: how should my hangman work?
   - word complete
  */
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -40,6 +39,7 @@ public class Main {
         for (int i = 0; i < reveal.length; i++) {
             reveal[i] = "_";
         }
+
 
         //Create a scanner to be able to ask for user input
         Scanner myScan = new Scanner(System.in);
@@ -94,8 +94,15 @@ public class Main {
 
     //prints the content of a String Array
     public static void printList(String[] myString) {
+        /*
         for (int i = 0; i < myString.length; i++) {
+
             System.out.print(myString[i]);
+        }
+         */
+
+        for (String myLetter : myString) {
+            System.out.print(myLetter);
         }
         System.out.println();
     }
